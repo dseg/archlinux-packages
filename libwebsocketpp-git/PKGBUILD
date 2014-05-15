@@ -1,0 +1,30 @@
+# Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
+# Contributor: skydrome <skydrome@i2pmail.org>
+# Contributor: MTsoul
+
+pkgname=libwebsocketpp-git
+pkgver=20140325
+pkgrel=1
+pkgdesc="C++/Boost Asio based websocket client/server library"
+url="https://github.com/zaphoyd/websocketpp"
+license=('BSD')
+arch=('any')
+makedepends=('git' 'cmake')
+
+source=("git://github.com/zaphoyd/websocketpp.git")
+md5sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/websocketpp"
+    git log -1 --format="%cd" --date=short |tr -d '-'
+}
+
+prepare() {
+    cd "$srcdir/websocketpp"
+    cmake -DCMAKE_INSTALL_PREFIX="/usr"
+}
+
+package() {
+    cd "$srcdir/websocketpp"
+    make DESTDIR="$pkgdir" install
+}
