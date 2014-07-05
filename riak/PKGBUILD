@@ -1,28 +1,34 @@
-# Maintainer: Vincent Bernardoff <vb@luminar.eu.org>
+# Maintainer: Vincent Bernardoff <vb@luminar.eu.org>#
 # Contributor: lafka <lafa@hackeriet.no>
 # Contributor: Albert Chang <albert.chang@gmx.com>
 # Contributor: Thomas Mudrunka <harvie@@email..cz> You can also contact me on http://blog.harvie.cz/
 # Contributor: zhehao
 
 pkgname=riak
-pkgver=2.0.0beta1
+pkgver=2.0.0beta7
 pkgrel=1
 pkgdesc='NOSQL database engine providing decentralized key-value store, flexible map/reduce engine and HTTP/JSON query interface'
 arch=('i686' 'x86_64')
 license=('APACHE')
 url='http://riak.basho.com/'
-makedepends=('erlang-nox<17' 'java-environment')
+makedepends=('erlang-nox' 'java-environment')
 backup=('opt/riak/etc/riak.conf')
 install='riak.install'
 source=(
-    "http://s3.amazonaws.com/downloads.basho.com/${pkgname}/2.0/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+    "http://github.com/basho/riak/archive/${pkgname}-${pkgver}.tar.gz"
     'riak.service'
 )
-md5sums=('88a75d6e1714ebfe4f5221dc5a00bf6a'
+md5sums=('0723cebfa124bf954b748c7bb27d0a80'
          'ed4cda47fc1fad8b0a3fb3858600c578')
 
+pkgver() {
+  cd "$srcdir/$pkgname"
+  # cutting off 'riak-' prefix that presents in the git tag
+  git describe --long | sed -E 's/^riak-//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgname-$pkgver"
 
   msg 'Building...'
   unset LDFLAGS
@@ -30,8 +36,8 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
+  cd "$srcdir/$pkgname-$pkgname-$pkgver"
+  
   install -d "$pkgdir/opt"
   install -d "$pkgdir/var/log"
   install -d "$pkgdir/etc"
