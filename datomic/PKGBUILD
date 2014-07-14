@@ -1,6 +1,6 @@
 # Maintainer: Daichi Shinozaki <dsdseg at gmail dot com>
 pkgname=datomic
-pkgver=0.9.4766
+pkgver=0.9.4815.12
 pkgrel=1
 pkgdesc="A database of flexible,time-based facts,supporting queries and joins,with elastic scalability,and ACID transactions"
 arch=('any')
