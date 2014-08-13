@@ -29,7 +29,7 @@ check() {
 
 package() {
   cd "$srcdir"
-  install -Dm755 console "$pkgdir"/usr/bin/$pkgname
+  install -Dm755 ./"${pkgname}-${pkgver}"/console "$pkgdir"/usr/bin/$pkgname
   install -d "$pkgdir"/opt/$pkgname
   cp -R $pkgname-$pkgver/* "$pkgdir"/opt/$pkgname/
   rm -rf "$pkgdir"/opt/$pkgname/{tests,quick-test,console}
