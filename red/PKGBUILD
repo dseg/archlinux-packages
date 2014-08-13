@@ -1,7 +1,7 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=red
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Red Programming Language - An open source, native code compiled, dialect of Rebol"
 arch=('i686' 'x86_64')
 url="http://www.red-lang.org"
@@ -14,6 +14,7 @@ md5sums=('ff052ff74699c827ae0843af967e0ffa')
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
   rebol -qw red.r tests/hello.red
+  rebol -qw red.r runtime/console/console.red
   msg2 "Generating docs..."
   cd docs
   rebol -qw makedoc2.r red-system-specs.txt
@@ -21,14 +22,17 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
-  rebol -qws run-all.r --batch
+   msg2 "Skipping tests..."
+#  cd "$srcdir/$pkgname-$pkgver"
+#  rebol -qws run-all.r --batch
 }
 
 package() {
   cd "$srcdir"
-  install -d "$pkgdir"/opt/red
-  cp -R $pkgname-$pkgver/* "$pkgdir"/opt/red/
+  install -Dm755 console "$pkgdir"/usr/bin/$pkgname
+  install -d "$pkgdir"/opt/$pkgname
+  cp -R $pkgname-$pkgver/* "$pkgdir"/opt/$pkgname/
+  rm -rf "$pkgdir"/opt/$pkgname/{tests,quick-test,console}
   cd $pkgname-$pkgver
   install -Dm644 BSD-3-License.txt "$pkgdir"/usr/share/licenses/$pkgname/BSD-3-License.txt
   install -Dm644 BSL-License.txt "$pkgdir"/usr/share/licenses/$pkgname/BSL-License.txt
