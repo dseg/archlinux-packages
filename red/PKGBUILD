@@ -7,9 +7,14 @@ arch=('i686' 'x86_64')
 url="http://www.red-lang.org"
 license=('custom:3-clause BSD' 'custom:BSL')
 groups=('devel')
-makedepends=('wget' 'rebol=2.7.8')
+conflicts=('ed')
+makedepends=('wget' 'rebol=2.7.8' 'bash')
 source=("https://github.com/dockimbel/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('ff052ff74699c827ae0843af967e0ffa')
+
+if test "$CARCH" == x86_64; then
+  depends+=(lib32-readline)
+fi
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
