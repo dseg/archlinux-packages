@@ -5,30 +5,25 @@
 # Contributor: zhehao
 
 pkgname=riak
-pkgver=2.0.0rc1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='NOSQL database engine providing decentralized key-value store, flexible map/reduce engine and HTTP/JSON query interface'
 arch=('i686' 'x86_64')
 license=('APACHE')
 url='http://riak.basho.com/'
 makedepends=('erlang-nox' 'java-environment')
+optdepends=('jdk7-openjdk')
 backup=('opt/riak/etc/riak.conf')
 install='riak.install'
 source=(
-    "http://github.com/basho/riak/archive/${pkgname}-${pkgver}.tar.gz"
+    "http://s3.amazonaws.com/downloads.basho.com/riak/2.0/${pkgver}/${pkgname}-${pkgver}.tar.gz"
     'riak.service'
 )
-md5sums=('7ad141c04baa5adf77c6c808ac7981e8'
+md5sums=('c04fb3b758e97b2f512cc170e4f46649'
          'ed4cda47fc1fad8b0a3fb3858600c578')
 
-pkgver() {
-  cd "$srcdir/$pkgname"
-  # cutting off 'riak-' prefix that presents in the git tag
-  git describe --long | sed -E 's/^riak-//;s/([^-]*-g)/r\1/;s/-/./g'
-}
-
 build() {
-  cd "$srcdir/$pkgname-$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   msg 'Building...'
   unset LDFLAGS
@@ -36,7 +31,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   
   install -d "$pkgdir/opt"
   install -d "$pkgdir/var/log"
