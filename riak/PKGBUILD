@@ -5,7 +5,7 @@
 # Contributor: zhehao
 
 pkgname=riak
-pkgver=2.0.3
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='NOSQL database engine providing decentralized key-value store, flexible map/reduce engine and HTTP/JSON query interface'
 arch=('i686' 'x86_64')
@@ -17,15 +17,14 @@ optdepends=('jdk7-openjdk')
 backup=('opt/riak/etc/riak.conf')
 install='riak.install'
 source=(
-    "https://github.com/basho/riak/archive/$pkgname-$pkgver.tar.gz"
-#    "http://s3.amazonaws.com/downloads.basho.com/riak/2.0/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+    "http://s3.amazonaws.com/downloads.basho.com/riak/2.0/${pkgver}/${pkgname}-${pkgver}.tar.gz"
     'riak.service'
 )
 md5sums=('e0a857a3a1ff2d2b040c69948ffe8871'
          'ed4cda47fc1fad8b0a3fb3858600c578')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   msg 'Building...'
   unset LDFLAGS
@@ -33,7 +32,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   
   install -d "$pkgdir/opt"
   install -d "$pkgdir/var/log"
