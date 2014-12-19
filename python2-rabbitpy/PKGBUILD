@@ -9,15 +9,15 @@ depends=('python2' )
 makedepends=('python2-distribute' )
 license=('CUSTOM')
 arch=('any')
-source=('https://pypi.python.org/packages/source/r/rabbitpy/rabbitpy-0.23.0.tar.gz')
+source=("https://pypi.python.org/packages/source/r/rabbitpy/rabbitpy-$pkgver.tar.gz")
 md5sums=('6430a629d8d7b4c7f6db8e87a28c1b4d')
 
 build() {
-    cd $srcdir/rabbitpy-0.23.0
+    cd $srcdir/rabbitpy-$pkgver
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/rabbitpy-0.23.0
+    cd $srcdir/rabbitpy-$pkgver
     python2 setup.py install --root="$pkgdir" --optimize=1 
 }
