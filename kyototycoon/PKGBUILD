@@ -1,0 +1,33 @@
+# Maintainer: Alexander Duscheleit <jinks@archlinux.us>
+pkgname=kyototycoon
+pkgver=0.9.56
+pkgrel=1
+pkgdesc="A lightweight conncurent remote frontend for Kyoto Cabinet."
+arch=('i686' 'x86_64')
+url="http://fallabs.com/kyototycoon"
+license=('GPL3')
+depends=('zlib' 'kyotocabinet>=1.2.34')
+source=("http://fallabs.com/${pkgname}/pkg/${pkgname}-${pkgver}.tar.gz"
+ktdbext.h.patch)
+sha256sums=('553e4ea83237d9153cc5e17881092cefe0b224687f7ebcc406b061b2f31c75c6'
+            'a30c3d8c4208967a421b424312f379d0d951087640638556091d7a45edb2f8ea')
+
+prepare(){
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p0 -i $srcdir/ktdbext.h.patch
+}
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  make install DESTDIR="$pkgdir/"
+}
+
+# vim:set ts=2 sw=2 et:
