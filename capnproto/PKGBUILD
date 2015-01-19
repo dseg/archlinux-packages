@@ -1,0 +1,26 @@
+# Maintainer: mabl <matthias@blaicher.com>
+pkgname=capnproto
+pkgver=0.5.0
+pkgrel=1
+pkgdesc="Cap'n Proto serialization/RPC system"
+arch=('i686' 'x86_64')
+url="http://kentonv.github.io/capnproto/"
+license=('MIT')
+makedepends=('git')
+conflicts=('capnproto-git')
+
+source=("http://capnproto.org/capnproto-c++-${pkgver}.tar.gz")
+sha512sums=('040846376284871574bdbbd5d29d006e68195c48719faed42b2d1c1ed83e44b2d820050b03a9ea7d8d098d765391bf9015b1e5a1ecc3db933b85b66f40f4ffa3')
+
+build() {
+  cd "${srcdir}/capnproto-c++-${pkgver}"
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "${srcdir}/capnproto-c++-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+}
+
+# vim:set ts=2 sw=2 et:
