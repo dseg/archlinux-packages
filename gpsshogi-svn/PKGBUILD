@@ -53,7 +53,7 @@ package() {
   rm -f $srcdir/gpsshogi/include/gpsshogi/revision.h.new
   cp -r $srcdir/gpsshogi/include/gpsshogi "$pkgdir"/usr/include/
   install -m755 $srcdir/gpsshogi/release/{alphabetastat,gps{usi,shogi}} "$pkgdir"/usr/bin/
-#  chrpath --delete $srcdir/gpsshogi/sample/viewer/viewer
-#  install -m755 $srcdir/gpsshogi/sample/viewer/viewer "$pkgdir"/usr/bin/gpsshogi-viewer
+  chrpath --delete $srcdir/gpsshogi/sample/viewer/viewer
+  install -m755 $srcdir/gpsshogi/sample/viewer/viewer "$pkgdir"/usr/bin/gpsshogi-viewer
   install -m755 $srcdir/gpsshogi/sample/gpsshell/gpsshell "$pkgdir"/usr/bin/
 }
