@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url='http://gps.tanaka.ecc.u-tokyo.ac.jp/gpsshogi/index.php?GPSShogiEn'
 license=('custom')
 groups=('lib')
-depends=('libosl-svn' 'gsl' 'poco' 'boost-libs')
+depends=('libosl-svn' 'gsl' 'poco' 'qt4' 'boost-libs')
 makedepends=('chrpath' 'qtchooser' 'boost')
 install='gpsshogi.install'
 source=("gpsshogi.tar.gz::http://gps.tanaka.ecc.u-tokyo.ac.jp/cgi-bin/viewvc.cgi/trunk/gpsshogi/?root=gpsshogi&view=tar"
