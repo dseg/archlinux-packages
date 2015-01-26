@@ -1,3 +1,6 @@
+# Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
+# Based on ArchLinux's official PKGBUILD for Openssl
+#
 # $Id: PKGBUILD 228861 2015-01-09 17:56:17Z pierre $
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
@@ -9,13 +12,15 @@ pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (with VIA PadLock hardware encryption engine support)'
 arch=('i686' 'x86_64')
-url='https://www.openssl.org'
+#url='https://www.openssl.org'
+url=https://romanrm.net/openssl-padlock
 license=('custom:BSD')
 depends=('zlib' 'perl')
 optdepends=('ca-certificates')
 options=('!makeflags')
 backup=('etc/ssl/openssl.cnf')
 conflicts=('openssl')
+provides=('openssl=1.0.1l')
 source=("https://www.openssl.org/source/${pkgname%-via-padlock}-${_ver}.tar.gz"
         'no-rpath.patch'
         'ca-dir.patch'
