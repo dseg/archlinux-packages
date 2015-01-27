@@ -25,9 +25,7 @@ build() {
   CC=gcc ./configure \
    --prefix=/usr \
    --libdir=/usr/lib \
-   --sbindir=/usr/bin \
-   --sysconfdir=/etc \
-   --localstatedir=/var
+   --sysconfdir=/etc
   
   make
 }
