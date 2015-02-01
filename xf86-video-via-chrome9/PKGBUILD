@@ -2,7 +2,7 @@
 # Contributor: Paul Burton <paulburton89@gmail.com>
 pkgname=xf86-video-via-chrome9
 pkgver=92.008.d9c5be.20140915
-pkgrel=2
+pkgrel=3
 pkgdesc="VIA chrome9 Xorg driver"
 arch=('i686' 'x86_64')
 url="http://linux.via.com.tw"
