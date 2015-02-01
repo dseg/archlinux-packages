@@ -1,4 +1,5 @@
-# Maintainer: Vincent Bernardoff <vb@luminar.eu.org>#
+# Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
+# Contributor: Vincent Bernardoff <vb@luminar.eu.org>#
 # Contributor: lafka <lafa@hackeriet.no>
 # Contributor: Albert Chang <albert.chang@gmx.com>
 # Contributor: Thomas Mudrunka <harvie@@email..cz> You can also contact me on http://blog.harvie.cz/
@@ -11,8 +12,8 @@ pkgdesc='NOSQL database engine providing decentralized key-value store, flexible
 arch=('i686' 'x86_64')
 license=('APACHE')
 url='http://riak.basho.com/'
-conflicts=('tsung')
-makedepends=('erlang-nox' 'java-environment')
+#conflicts=('tsung')
+makedepends=('erlang-r16=R16B03' 'java-environment')
 optdepends=('jdk7-openjdk')
 backup=('opt/riak/etc/riak.conf')
 install='riak.install'
