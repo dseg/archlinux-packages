@@ -1,0 +1,15 @@
+pkgname=bsfilter
+pkgver=1.0.19
+pkgrel=1
+pkgdesc="Bayesian spam filter with Japanese support"
+url=http://sourceforge.jp/projects/bsfilter/
+arch=('any')
+license=('GPL2')
+source=("http://jaist.dl.sourceforge.jp/bsfilter/59804/$pkgname-$pkgver.tgz")
+depends=('ruby')
+optdepends=('procmail' 'courier-maildrop' 'emacs-mew')
+md5sums=('6a9c5b9e553560908af30f038f80cfbe')
+
+package() {  
+  install -Dm755 $srcdir/$pkgname-$pkgver/$pkgname/$pkgname $pkgdir/usr/bin/$pkgname
+}
