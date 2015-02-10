@@ -11,7 +11,7 @@ url='http://mesos.apache.org/'
 license=('Apache')
 groups=('science')
 depends=('python2' 'python2-boto' 'curl' 'libsasl' 'leveldb' 'java-environment' 'libunwind' 'python2-protobuf')
-makedepends=('java-environment' 'maven' 'http-parser' 'python2-http-parser' 'protobuf' 'google-glog' 'gperftools')
+makedepends=('java-environment' 'maven' 'http-parser' 'python2-http-parser' 'protobuf' 'google-glog' 'gperftools' 'subversion' 'apr')
 #rc releases
 #source=("https://github.com/apache/mesos/archive/$pkgver${_pkgver_minor}.tar.gz"
 source=("http://www.apache.org/dist/$pkgname/$pkgver/$pkgname-${pkgver}.tar.gz"
