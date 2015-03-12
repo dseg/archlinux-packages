@@ -10,7 +10,7 @@ makedepends=('subversion')
 depends=('python2' 'python2-setuptools')
 license=('custom')
 #source=("gyp::git+https://github.com/svn2github/gyp.git")
-source=("gyp::git+https://git.chromium.org/external/gyp.git")
+source=("gyp::git+https://chromium.googlesource.com/external/gyp")
 
 pkgver() {
   cd $srcdir/gyp
