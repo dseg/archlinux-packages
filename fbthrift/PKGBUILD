@@ -25,7 +25,7 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver/thrift"
 	PYTHON=/usr/bin/python2 ./configure --prefix=/usr
-  sed --in-place -e 's/python\( -mthrift_compiler.main\)/python2 \1/g' ./lib/cpp2/Makefil
+  sed --in-place -e 's/python\( -mthrift_compiler.main\)/python2 \1/g' ./lib/cpp2/Makefile
   make
 }
 
