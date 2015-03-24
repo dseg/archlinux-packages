@@ -1,6 +1,6 @@
 # Maintainer: mabl <matthias@blaicher.com>
 pkgname=capnproto
-pkgver=0.5.1.1
+pkgver=0.5.1.2
 pkgrel=1
 pkgdesc="Cap'n Proto serialization/RPC system"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('git')
 conflicts=('capnproto-git')
 
 source=("http://capnproto.org/capnproto-c++-${pkgver}.tar.gz")
-sha512sums=('f2d2327bb1f9a590bdfb083ffdb906e415eaceb4734b8765cc40572166c90c400c2509886a9243d87d4201efc4415e9d7dd1a365c503ec707db0ccee98d54ee2')
+sha512sums=('d9e1d605a97fa756d8cb326c5e70287cfe74d23aa52da5ebefb0b9727892a7ef6c1d986533c0becd8476a0f7bace03bbf853433d6222f63d92e5f597d851b544')
 
 build() {
   cd "${srcdir}/capnproto-c++-${pkgver}"
