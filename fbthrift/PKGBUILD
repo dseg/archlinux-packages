@@ -10,6 +10,7 @@ depends=('folly' 'krb5' 'numactl' 'python2')
 conflicts=('thrift')
 provides=('thrift')
 makedepends=('scons')
+options=('!emptydirs' 'staticlibs')
 source=("https://github.com/facebook/$pkgname/archive/v${pkgver}.tar.gz")
 md5sums=('562e85eb04f53973105f5c6aaf72f2da')
 
