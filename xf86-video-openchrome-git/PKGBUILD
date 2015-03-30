@@ -2,14 +2,14 @@
 # Contributors: Pascal 'hardfalcon' Ernster <aur@hardfalcon.net>, Marcel Dijkstra - <marcel~dykstra@gmail~com>
 _pkgname=xf86-video-openchrome
 pkgname=$_pkgname-git
-pkgver=release_0_3_3.36.g98d43c4
+pkgver=release_0_3_3.41.gc391551
 pkgrel=1
 pkgdesc="OpenChrome X driver for VIA UniChrome graphics cards - latest git version"
 arch=('i686' 'x86_64')
 url="http://www.openchrome.org"
 license=('GPL2')
 depends=('intltool' 'xf86driproto' 'glproto' 'mesa' 'libxvmc')
-makedepends=('X-ABI-VIDEODRV_VERSION=18' 'git' 'pkgconfig' 'intltool' 'libtool' 'automake>=1.7.0' 'xorg-server-devel')
+makedepends=('X-ABI-VIDEODRV_VERSION=19' 'git' 'pkgconfig' 'intltool' 'libtool' 'automake>=1.7.0' 'xorg-server-devel')
 provides=('xf86-video-openchrome')
 conflicts=('xf86-video-via' 'xf86-video-unichrome' 'xf86-video-openchrome' 'X-ABI-VIDEODRV_VERSION<18' 'openchrome'  'xorg-server<1.15.0')
 optdepends=('unichrome-dri')
