@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
 arch=('i686' 'x86_64')
 url="https://github.com/facebook/proxygen"
-license=('Apache')
+license=('BSD')
 depends=('folly>=0.34.0' 'fbthrift' 'libcap')
 source=("https://github.com/facebook/proxygen/archive/v$pkgver.tar.gz"
 'EchoServer.cpp.patch'
@@ -13,6 +13,8 @@ source=("https://github.com/facebook/proxygen/archive/v$pkgver.tar.gz"
 )
 makedepends=('autoconf-archive' 'wget' 'ruby' 'gperftools')
 options=('!makeflags')
+conflicts=('proxygen-git')
+provides=('proxygen')
 md5sums=('227a9246fbeb83c9db2d90c05302d36c'
          'f587fd8970bd02648474dac6d9d62326'
          '49d7933cd97856f9b4f02c5f692fcc85')
