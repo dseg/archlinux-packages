@@ -8,9 +8,9 @@ pkgdesc="An erlang application for consuming, producing and manipulating json."
 arch=('i686' 'x86_64')
 url=https://github.com/talentdeficit/jsx/
 license=('MIT')
-depends=('erlang-nox')
+depends=('erlang')
 makedepends=('rebar')
-source=("https://github.com/talentdeficit/jsx/archive/v2.5.2.tar.gz")
+source=("https://github.com/talentdeficit/jsx/archive/v$pkgver.tar.gz")
 md5sums=('2f9d7212772b843269ec5621387f98dd')
 
 build() {
