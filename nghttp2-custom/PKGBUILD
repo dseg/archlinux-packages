@@ -1,7 +1,7 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=nghttp2-custom
-pkgver=0.7.12
+pkgver=0.7.13
 _pkgver=v0.7.13
 _pkgname=${pkgname/-custom/}
 pkgrel=1
@@ -14,7 +14,7 @@ provides=('nghttp2')
 conflicts=('nghttp2' 'nghttp2-git')
 source=("https://github.com/tatsuhiro-t/nghttp2/releases/download/${_pkgver}/nghttp2-${pkgver}.tar.gz")
 backup=('etc/nghttpx/nghttpx.conf')
-sha256sums=('b92e22176d80c4c9f88e90c20fa5100537f80b5e5d1201a1d3888c05e0aed2b3')
+sha256sums=('5f940d82da60a4fefda5f8c2bdd35f445d34612a126ea02fd511fdc29b54bde4')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
