@@ -1,6 +1,6 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 # Based on PKGBUILD by Aleksey Filippov <sarum9in@gmail.com>
-pkgname=grpc
+pkgname=grpc-git
 pkgver=0.6.0.r804.gae94d86
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
