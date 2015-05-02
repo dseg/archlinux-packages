@@ -40,6 +40,5 @@ _install_dir() (
 package() {
   cd $_pkgname
   make install prefix="$pkgdir/usr"
-  install -Dm644 etc/roots.pem "$pkgdir/usr/share/grpc/roots.pem"
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
 }
