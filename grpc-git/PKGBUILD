@@ -11,6 +11,7 @@ license=('BSD')
 conflicts=('grpc')
 depends=('openssl' 'protobuf3')
 makedepends=('gtest' 'gflags')
+options=(!makeflags)
 source=('git+https://github.com/grpc/grpc.git')
 md5sums=('SKIP')
 
@@ -22,7 +23,7 @@ pkgver() {
 build() {
   cd $_pkgname
   # Avoid collision with yaourt's environment variable
-  env --unset=BUILDDIR make $MAKEFLAGS dynamic prefix=/usr
+  env --unset=BUILDDIR make $MAKEFLAGS shared plugins prefix=/usr
 }
 
 check() {
@@ -38,10 +39,7 @@ _install_dir() (
 
 package() {
   cd $_pkgname
-  _install_dir 755 bins/opt usr/bin
-  rm "$pkgdir"/usr/bin/*_test
-  _install_dir 755 libs/opt usr/lib
-  _install_dir 644 include usr/include
+  make install prefix="$pkgdir/usr"
   install -Dm644 etc/roots.pem "$pkgdir/usr/share/grpc/roots.pem"
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
