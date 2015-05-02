@@ -1,6 +1,7 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 # Based on PKGBUILD by Aleksey Filippov <sarum9in@gmail.com>
 pkgname=grpc-git
+_pkgname=${pkgname/-git/}
 pkgver=0.6.0.r804.gae94d86
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
@@ -13,24 +14,19 @@ makedepends=('gtest' 'gflags')
 source=('git+https://github.com/grpc/grpc.git')
 md5sums=('SKIP')
 
-prepare() {
-  cd $pkgname
-  # git submodule update --init
-}
-
 pkgver() {
-  cd $pkgname
+  cd $_pkgname
   git describe --long --tags|sed 's/\([^-]*-g\)/r\1/;s/[-_]/./g;s/^release.//'
 }
 
 build() {
-  cd $pkgname
+  cd $_pkgname
   # Avoid collision with yaourt's environment variable
-  env --unset=BUILDDIR make $MAKEFLAGS prefix=/usr
+  env --unset=BUILDDIR make $MAKEFLAGS dynamic prefix=/usr
 }
 
 check() {
-  cd $pkgname
+  cd $_pkgname
   make test
 }
 
@@ -41,8 +37,9 @@ _install_dir() (
 )
 
 package() {
-  cd $pkgname
+  cd $_pkgname
   _install_dir 755 bins/opt usr/bin
+  rm "$pkgdir"/usr/bin/*_test
   _install_dir 755 libs/opt usr/lib
   _install_dir 644 include usr/include
   install -Dm644 etc/roots.pem "$pkgdir/usr/share/grpc/roots.pem"
