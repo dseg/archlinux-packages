@@ -1,6 +1,6 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=gpsshogi-svn
-pkgver=r3017
+pkgver=r3020
 pkgrel=1
 pkgdesc="Shogi (Japanese chess) playing program based on OpenShogiLib"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ source=("gpsshogi.tar.gz::http://gps.tanaka.ecc.u-tokyo.ac.jp/cgi-bin/viewvc.cgi
 'gpsshogi.profile'
 'Makefile.patch'
 )
-md5sums=('7054ccf2dd757ca8bcb737598c6b0638'
-         'e0e3e1fe73d93c1779314cbc39870f15'
+md5sums=('SKIP'
+         '539c37dcf4feb57b24ce2c155856f4e8'
          '3bafa7d5464e856bca8b3e801e3a8617'
          '3963a545156ea613d5371d0f38b1ca1b')
 
@@ -37,7 +37,7 @@ build() {
     export OSL_HOME=/usr/share/osl
   fi
   cd "$srcdir"/gpsshogi/
-  QT_SELECT=4 make viewer-release
+  env QT_SELECT=4 make viewer-release
   cd ./release
   make
   cd ../sample/gpsshell
