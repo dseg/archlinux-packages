@@ -1,0 +1,30 @@
+# Note:
+# Just handle to build the relx v1.2.0 (but failed v1.3.0 or later) with 
+# erlang-nox 17.5 and rebar2.
+# AUR version does not build as of writting (28-May-2015).
+# https://aur.archlinux.org/packages/relx/
+#
+# Maintainer: Aaron France <aaron.l.france@gmail.com
+
+pkgname=relx
+pkgrel=1
+pkgver=1.2.0
+pkgdesc="Sane, simple release creation for Erlang"
+arch=(i686 x86_64)
+license=('Apache')
+url="https://github.com/erlware/relx"
+depends=('erlang-nox' 'rebar')
+provides=("relx")
+source=("https://github.com/erlware/relx/archive/v$pkgver.tar.gz")
+md5sums=('6dc4e4f1c04ae1b955f4527e7d0b0959')
+makedepdends=('git')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  rebar get-deps compile escriptize
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -Dm755 relx "$pkgdir/usr/bin/relx"
+}
